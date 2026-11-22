@@ -274,7 +274,7 @@ func (a *app) handleOffline(req q2spot.Request) (q2spot.Reply, bool) {
 		offlineQueue := len(a.queue.Local) > 0
 		a.mu.Unlock()
 		if offlineQueue {
-			return a.queuePage(), true
+			return a.queuePage(req.Args), true
 		}
 	case "playqueue":
 		a.mu.Lock()
