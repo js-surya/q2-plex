@@ -1,6 +1,6 @@
 # q2-plex
 
-**Experimental v0.6.0** — music-only Plex client for the Shanling Q2 with Q2 Pod firmware.
+**Experimental v0.7.0 beta** — music-only Plex client for the Shanling Q2 with Q2 Pod firmware.
 
 This is a beta requiring testing on the physical Q2, particularly interrupted downloads and local file playback. Inspired by Q2 Pod's generic card app API, A4Link/q2-jellyfin (MIT), and the Plex authentication and library APIs. No video playback or video decoding.
 
@@ -27,7 +27,7 @@ Requires Go 1.22+, Python 3, curl, and an internet connection for the CA bundle.
 ./contrib/shanlingq2/build.sh
 ```
 
-Unzip `dist/q2-plex-v0.6.0.zip` into the **root** of the Q2's microSD card, preserving the hidden `.plex` folder. After replacing an existing version, restart the Q2 so the old executable is not still running. In Q2 Pod select **Streaming → Plex Music**. The app stays in Streaming, as in previous releases.
+Unzip `dist/q2-plex-v0.7.0.zip` into the **root** of the Q2's microSD card, preserving the hidden `.plex` folder. After replacing an existing version, restart the Q2 so the old executable is not still running. In Q2 Pod select **Streaming → Plex Music**. The app stays in Streaming, as in previous releases.
 
 1. Select **Sign In with Plex**.
 2. On your phone open https://plex.tv/link and enter the code shown on the Q2.
