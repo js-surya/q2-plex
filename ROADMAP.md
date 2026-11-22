@@ -20,7 +20,7 @@ Reference contract: [Q2 Pod card apps / Q2SPOT/1](https://github.com/DiamondBond
 
 Automated builds passed previously, but real-device validation remains incomplete. A successful Plex login and visible music library do **not** imply that full-length playback is proven.
 
-## v0.7.0 — Native Q2 player integration audit and stabilization (NEXT)
+## v0.7.0 — Native Q2 player integration audit (BETA MERGED)
 
 1. **Trace the playback path:** inspect q2-plex's generated `/tmp/q2-plex.urls` and `/tmp/q2-plex.play`, local token-free relay, track metadata, artwork paths, and `Q2SPOT/1` browsing commands against the current Q2 Pod implementation. Document where the firmware owns each behavior.
 2. **Keep responsibilities narrow:** delegate playback, queue transitions, gapless behavior where native-supported, pause, seek, previous/next, Now Playing and hardware controls to Q2 Pod. Remove only demonstrably duplicated or conflicting app-side behavior. Retain the relay when it is needed for authenticated Plex streams.
@@ -28,9 +28,9 @@ Automated builds passed previously, but real-device validation remains incomplet
 4. **Protect existing behavior:** retain Plex timeline reporting, favorite synchronization, last-queue recovery, offline files, downloads, login and original-quality streaming.
 5. **Test and verify:** unit/regression tests, Go formatting, MIPS packaging and CI; then physical-Q2 testing of a complete FLAC album, next/previous, play/pause, seeking, artwork, long streams, local downloads and Wi-Fi interruption/recovery.
 
-**Exit criteria:** no parallel audio decoder or duplicate button-control loop in q2-plex; native playback contract documented; automated CI green; device test results recorded separately. Mark v0.7 production-ready only after hardware tests actually pass.
+**Beta status:** Native playback ownership documented; full 250-track queue pagination implemented. PR #8 merged. The offline-queue build call was corrected after CI detected a compilation failure. New CI and physical-device validation remain to be confirmed. Production-ready status is deferred; v0.8 will address observed hardware defects.
 
-## v0.8.0 — UI and browsing polish
+## v0.8.0 — Hardware-found bug fixes and UI polish
 
 Improve browse hierarchy, music search, list pagination, artwork responsiveness, loading/error states and click-wheel ergonomics using Q2 Pod's existing card-app UI. Prefer native Q2 Pod visual conventions; avoid a custom player screen.
 
