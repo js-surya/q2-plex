@@ -1,10 +1,10 @@
 # q2-plex
 
-**Unofficial Plex client** — music-only third-party card app for Shanling Q2 with Q2 Pod firmware. Not developed, sponsored, or endorsed by Plex, Inc. The app is named **Plex Music** and uses Q2 Pod's native player; it is not the official Plexamp application.
+**Unofficial Plex client** — music-only third-party card app for Shanling Q2 with Q2 Pod firmware. Not developed, sponsored, or endorsed by Plex, Inc. Plex account login and music playback engine were developed referencing Plex’s API [documentation](https://developer.plex.tv/pms/). The app is named **Plex Music** and uses Q2 Pod's native player; it is not the official Plexamp application.
 
 **Current release: v1.0.0.** This is the first versioned public release, not a claim that every feature has been validated on physical Q2 hardware. See [v1.0.0 release notes](docs/RELEASE-v1.0.0.md) for supported features and limitations.
 
-Hardware testing is still needed, particularly for uninterrupted full-length playback, Wi-Fi recovery, offline downloads and battery performance. Inspired by Q2 Pod's generic card app API, A4Link/q2-jellyfin (MIT), and the Plex authentication and library APIs. No video playback or video decoding.
+More hardware testing is still needed, particularly for uninterrupted full-length playback, Wi-Fi recovery, offline downloads and battery performance. Inspired by Q2 Pod's generic card app API, A4Link/q2-jellyfin (MIT), and the Plex authentication and library APIs. No video playback or video decoding.
 
 ## App identity and icon
 
