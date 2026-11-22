@@ -1,0 +1,34 @@
+name: Test and build Q2 Plex
+permissions:
+  contents: write
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Format Go sources
+        run: gofmt -w $(find cmd internal -name '*.go')
+      - name: Commit formatted source to branch
+        if: github.event_name == 'push' && github.ref_name == 'feature/music-client-bootstrap'
+        run: |
+          if ! git diff --quiet -- cmd internal; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add cmd internal
+            git commit -m 'Format Go sources'
+            git push
+          fi
+      - name: Unit tests
+        run: go test ./...
+      - name: Package MIPS32 app
+        run: ./contrib/shanlingq2/build.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: q2-plex-beta
+          path: dist/q2-plex-*.zip
