@@ -17,4 +17,9 @@ if [ -n "${Q2_PLEX_CA_FILE:-}" ] && [ -r "$Q2_PLEX_CA_FILE" ]; then
 else
   curl -fsSL --max-time 30 https://curl.se/ca/cacert.pem -o "$STAGE/cacert.pem"
 fi
+# Community Plexamp artwork, licensed CC BY 4.0 by selfh.st/icons.
+# Always include the icon in the installable package; fail if retrieval fails.
+# Match Q2 Pod's required 52 px and 40 px icon sizes.
+curl -fsSL --max-time 30 https://cdn.jsdelivr.net/gh/selfhst/icons/png/plexamp.png -o "$OUT/plexamp-source.png"
+python3 contrib/shanlingq2/make_icons.py "$OUT/plexamp-source.png" "$STAGE"
 python3 contrib/shanlingq2/package.py "$STAGE" "$OUT/q2-plex-v0.9.0.zip"
