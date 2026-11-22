@@ -122,6 +122,7 @@ func (a *app) playAlbum(ctx context.Context, albumID, selected string) q2spot.Re
 	}
 	tracks, err := a.client.AlbumTracks(ctx, albumID, queueLimit)
 	if err != nil {
+		a.notePlexFailure(err)
 		return q2spot.Fail("error", "Album tracks could not load")
 	}
 	if len(tracks) == 0 {

@@ -47,6 +47,7 @@ func (a *app) withArt(reply q2spot.Reply, rows []artworkJob) q2spot.Reply {
 func (a *app) searchReply(ctx context.Context, q string) q2spot.Reply {
 	items, err := a.client.Search(ctx, q)
 	if err != nil {
+		a.notePlexFailure(err)
 		return q2spot.Fail("error", "Plex search failed")
 	}
 	r := q2spot.Reply{Rows: []q2spot.Row{{Kind: "search", Title: "Search Plex Music"}}}
@@ -108,6 +109,7 @@ func (a *app) extra(ctx context.Context, req q2spot.Request) (q2spot.Reply, bool
 			items, more, err = a.client.Items(ctx, req.Op, id, offset)
 		}
 		if err != nil {
+			a.notePlexFailure(err)
 			return q2spot.Fail("error", "Could not load Plex music"), true
 		}
 		reply := q2spot.Reply{}
@@ -184,6 +186,7 @@ func (a *app) playPlaylist(ctx context.Context, id, selected string) q2spot.Repl
 	}
 	tracks, err := a.client.PlaylistTracks(ctx, id, queueLimit)
 	if err != nil {
+		a.notePlexFailure(err)
 		return q2spot.Fail("error", "Could not load playlist tracks")
 	}
 	if len(tracks) == 0 {
