@@ -1,4 +1,5 @@
-# q2-plex
+# q2-plex <img width="52" height="52" alt="icon" src="https://github.com/user-attachments/assets/dd6630b4-9860-4373-a015-12652338f960" />
+
 
 **Unofficial Plex client** — music-only third-party card app for Shanling Q2 with Q2 Pod firmware. Not developed, sponsored, or endorsed by Plex, Inc. Plex account login and music playback engine were developed referencing Plex’s API [documentation](https://developer.plex.tv/pms/). The app is named **Plex Music** and uses Q2 Pod's native player; it is not the official Plexamp application.
 
